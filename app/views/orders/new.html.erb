@@ -1,0 +1,81 @@
+<h1>Buat Order Baru</h1>
+
+<%= form_with url: orders_path, method: :post do |f| %>
+
+  <h2>Customer</h2>
+  <div>
+    <%= label_tag :customer_name, "Nama" %><br>
+    <%= text_field_tag :customer_name %>
+  </div>
+  <div>
+    <%= label_tag :customer_email, "Email" %><br>
+    <%= text_field_tag :customer_email %>
+  </div>
+  <div>
+    <%= label_tag :customer_phone, "No. Telepon" %><br>
+    <%= text_field_tag :customer_phone %>
+  </div>
+  <div>
+    <%= label_tag :customer_address, "Alamat" %><br>
+    <%= text_area_tag :customer_address %>
+  </div>
+
+  <h2>Shoe</h2>
+  <div>
+    <%= label_tag :shoe_brand, "Merek Sepatu" %><br>
+    <%= text_field_tag :shoe_brand %>
+  </div>
+  <div>
+    <%= label_tag :shoe_color, "Warna Sepatu" %><br>
+    <%= text_field_tag :shoe_color %>
+  </div>
+  <div>
+    <%= label_tag :shoe_size, "Ukuran Sepatu" %><br>
+    <%= text_field_tag :shoe_size %>
+  </div>
+  <div>
+    <%= label_tag :shoe_material, "Material" %><br>
+    <%= text_field_tag :shoe_material %>
+  </div>
+  <div>
+    <%= label_tag :shoe_condition, "Kondisi Sepatu" %><br>
+    <%= text_field_tag :shoe_condition %>
+  </div>
+
+  <h2>Service</h2>
+  <div>
+    <%= f.label :service_id, "Pilih Service" %><br>
+    <%= f.collection_select :service_id, Service.all, :id, :name, { prompt: "Pilih Service" } %>
+  </div>
+
+  <p id="harga-service" style="margin-top:10px; color:green; font-weight:bold;">
+    Pilih service untuk melihat harga
+  </p>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const serviceSelect = document.querySelector("#order_service_id");
+      const hargaText = document.querySelector("#harga-service");
+
+      const servicePrices = {
+        <% Service.all.each do |service| %>
+          <%= service.id %>: <%= service.price %>,
+        <% end %>
+      };
+
+      serviceSelect.addEventListener("change", (e) => {
+        const selectedId = e.target.value;
+        if (servicePrices[selectedId]) {
+          hargaText.textContent = "Harga: Rp " + servicePrices[selectedId].toLocaleString();
+        } else {
+          hargaText.textContent = "Pilih service untuk melihat harga";
+        }
+      });
+    });
+  </script>
+
+  <%= f.submit "Buat Order", style: "background:#2b6cb0;color:#fff;padding:8px 12px;border-radius:6px;border:none;cursor:pointer;margin-top:10px" %>
+<% end %>
+
+<br>
+<%= link_to "Kembali ke Daftar Orders", orders_path, style: "color:#2b6cb0;text-decoration:none" %>

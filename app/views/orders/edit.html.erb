@@ -1,0 +1,58 @@
+<h1 style="margin-bottom: 20px;">Edit Order</h1>
+
+<%= form_with(model: @order, local: true) do |form| %>
+  <table border="1" cellspacing="0" cellpadding="8" style="border-collapse: collapse; width: 60%; background: #fafafa;">
+    <tr>
+      <th style="width: 30%; text-align: left;">Customer</th>
+      <td>
+        <%= form.collection_select :customer_id, Customer.all, :id, :name, { prompt: "Pilih Customer" }, class: "form-control" %>
+      </td>
+    </tr>
+
+    <tr>
+      <th style="text-align: left;">Sepatu</th>
+      <td>
+        <%= form.collection_select :shoe_id, Shoe.all, :id, :brand, { prompt: "Pilih Sepatu" }, class: "form-control" %>
+      </td>
+    </tr>
+
+    <tr>
+      <th style="text-align: left;">Service</th>
+      <td>
+        <%= form.collection_select :service_id, Service.all, :id, :name, { prompt: "Pilih Service" }, class: "form-control", onchange: "updatePrice()" %>
+      </td>
+    </tr>
+
+    <tr>
+      <th style="text-align: left;">Status</th>
+      <td>
+        <%= form.select :status, ["Pending", "Proses", "Selesai"], {}, class: "form-control" %>
+      </td>
+    </tr>
+
+    <tr>
+      <th style="text-align: left;">Total Harga</th>
+      <td>
+        <span id="service-price"><%= number_to_currency(@order.service.price, unit: "Rp ") %></span>
+      </td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 20px;">
+    <%= form.submit "Simpan", class: "btn btn-success" %>
+    <%= link_to "↩ Kembali", orders_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>
+
+<script>
+  function updatePrice() {
+    const select = document.querySelector("#order_service_id");
+    const priceSpan = document.querySelector("#service-price");
+    const prices = {
+      <% Service.all.each do |s| %>
+        "<%= s.id %>": "<%= number_to_currency(s.price, unit: 'Rp ') %>",
+      <% end %>
+    };
+    priceSpan.innerText = prices[select.value] || "Rp 0";
+  }
+</script>

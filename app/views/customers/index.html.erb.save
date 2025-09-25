@@ -1,0 +1,12 @@
+<h1>Daftar Customers</h1>
+
+<ul>
+  <% @customers.each do |c| %>
+    <li><%= c.name %> - <%= c.email %> - <%= c.phone %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Tambah Customer", new_customer_path %>
+
+<h1>Customers#index</h1>
+<p>Find me in app/views/customers/index.html.erb</p>

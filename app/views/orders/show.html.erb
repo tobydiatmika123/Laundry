@@ -1,0 +1,29 @@
+<h1>Detail Order</h1>
+
+<p><strong>Customer:</strong> <%= @order.customer&.name %></p>
+<p><strong>Telepon:</strong> <%= @order.customer&.phone %></p>
+<p><strong>Email:</strong> <%= @order.customer&.email %></p>
+<p><strong>Alamat:</strong> <%= @order.customer&.address %></p>
+
+<p><strong>Shoe:</strong> <%= @order.shoe ? "#{@order.shoe.brand} (#{@order.shoe.color})" : "-" %></p>
+<p><strong>Service:</strong> 
+  <%= @order.service ? "#{@order.service.name} - #{number_to_currency(@order.service.price, unit: 'Rp ', separator: ',', delimiter: '.')}" : "-" %>
+</p>
+<p><strong>Status:</strong> <%= @order.status %></p>
+<p><strong>Total Harga:</strong> 
+  <%= number_to_currency(@order.total_price, unit: "Rp ", separator: ",", delimiter: ".") %>
+</p>
+<p><strong>Tanggal Order:</strong>
+  <%= @order.order_date&.strftime("%d %B %Y, %H:%M") || "—" %>
+</p>
+
+
+<hr>
+
+<%= link_to "Edit", edit_order_path(@order), class: "btn btn-warning" %> |
+<%= button_to "Hapus", order_path(@order), 
+      method: :delete, 
+      data: { confirm: "Yakin mau hapus order ini?" }, 
+      class: "btn btn-danger" %> |
+<%= link_to "Kembali", orders_path, class: "btn btn-secondary" %>
+

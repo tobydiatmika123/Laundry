@@ -1,0 +1,38 @@
+<h1>Tambah Customer</h1>
+
+<%= form_with(model: @customer, local: true) do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </p>
+
+  <p>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </p>
+
+  <p>
+    <%= f.label :shoe_id, "Pilih Sepatu" %><br>
+    <%= f.collection_select :shoe_id, @shoes, :id, :brand, prompt: "Pilih Sepatu" %>
+  </p>
+
+  <p>
+    <%= f.label :service_id, "Pilih Service" %><br>
+    <%= f.collection_select :service_id, @services, :id, :name, prompt: "Pilih Service" %>
+  </p>
+
+  <p>
+    <%= f.submit "Simpan" %>
+    <%= link_to "Kembali", customers_path %>
+  </p>
+<% end %>

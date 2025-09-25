@@ -1,0 +1,43 @@
+ => 
+[[32m#<Service:0x00007dea58fd8250[0m
+  id: [34m[1m1[0m,
+  name: [31m[1m"[0m[31mEasy Wash[0m[31m[1m"[0m,
+  description: [31m[1m"[0m[31mCuci standar cepat[0m[31m[1m"[0m,
+  price: [35m[1m0.3e5[0m,
+  created_at: [31m[1m"[0m[31m2025-09-02 03:18:54.239980000 +0000[0m[31m[1m"[0m,
+  updated_at: [31m[1m"[0m[31m2025-09-02 03:18:54.239980000 +0000[0m[31m[1m"[0m[32m>[0m,
+ [32m#<Service:0x00007dea59016f50[0m
+  id: [34m[1m2[0m,
+  name: [31m[1m"[0m[31mUnyellowing[0m[31m[1m"[0m,
+  description: [31m[1m"[0m[31mHilangkan kuning sol[0m[31m[1m"[0m,
+  price: [35m[1m0.3e5[0m,
+  created_at: [31m[1m"[0m[31m2025-09-02 03:18:54.259044000 +0000[0m[31m[1m"[0m,
+  updated_at: [31m[1m"[0m[31m2025-09-02 03:18:54.259044000 +0000[0m[31m[1m"[0m[32m>[0m,
+ [32m#<Service:0x00007dea59016550[0m
+  id: [34m[1m3[0m,
+  name: [31m[1m"[0m[31mPremium Suede[0m[31m[1m"[0m,
+  description: [31m[1m"[0m[31mPerawatan suede premium[0m[31m[1m"[0m,
+  price: [35m[1m0.65e5[0m,
+  created_at: [31m[1m"[0m[31m2025-09-02 03:18:54.273335000 +0000[0m[31m[1m"[0m,
+  updated_at: [31m[1m"[0m[31m2025-09-02 03:18:54.273335000 +0000[0m[31m[1m"[0m[32m>[0m,
+ [32m#<Service:0x00007dea59015b50[0m
+  id: [34m[1m4[0m,
+  name: [31m[1m"[0m[31mRepaint[0m[31m[1m"[0m,
+  description: [31m[1m"[0m[31mCat ulang full sepatu[0m[31m[1m"[0m,
+  price: [35m[1m0.125e6[0m,
+  created_at: [31m[1m"[0m[31m2025-09-02 03:18:54.278855000 +0000[0m[31m[1m"[0m,
+  updated_at: [31m[1m"[0m[31m2025-09-02 03:18:54.278855000 +0000[0m[31m[1m"[0m[32m>[0m,
+ [32m#<Service:0x00007dea59015150[0m
+  id: [34m[1m5[0m,
+  name: [31m[1m"[0m[31mRepair[0m[31m[1m"[0m,
+  description: [31m[1m"[0m[31mPerbaikan (harga bervariasi)[0m[31m[1m"[0m,
+  price: [35m[1m0.4e5[0m,
+  created_at: [31m[1m"[0m[31m2025-09-02 03:18:54.294848000 +0000[0m[31m[1m"[0m,
+  updated_at: [31m[1m"[0m[31m2025-09-02 03:18:54.294848000 +0000[0m[31m[1m"[0m[32m>[0m,
+ [32m#<Service:0x00007dea59014750[0m
+  id: [34m[1m6[0m,
+  name: [31m[1m"[0m[31mFast Wash[0m[31m[1m"[0m,
+  description: [31m[1m"[0m[31mCuci kilat 1 hari jadi[0m[31m[1m"[0m,
+  price: [35m[1m0.5e5[0m,
+  created_at: [31m[1m"[0m[31m2025-09-02 03:18:54.299280000 +0000[0m[31m[1m"[0m,
+  updated_at: [31m[1m"[0m[31m2025-09-02 03:18:54.299280000 +0000[0m[31m[1m"[0m[32m>[0m] 

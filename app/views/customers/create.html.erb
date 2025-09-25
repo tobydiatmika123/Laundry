@@ -1,0 +1,11 @@
+<h1>Daftar Customer</h1>
+
+<ul>
+  <% @customers.each do |c| %>
+    <li>
+      <%= link_to c.name, customer_path(c) %> - <%= c.phone %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Tambah Customer", new_customer_path %>

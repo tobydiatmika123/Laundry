@@ -1,0 +1,26 @@
+<h1>Daftar Customers</h1>
+
+<ul>
+  <% @customers.each do |c| %>
+    <li>
+      <strong><%= c.name %></strong> - <%= c.email %> - <%= c.phone %>
+      <br>
+      Pesanan:
+      <% if c.laundry_orders.any? %>
+        <ul>
+          <% c.laundry_orders.each do |lo| %>
+            <li>
+              <%= lo.shoe&.brand || "Tanpa Sepatu" %> /
+              <%= lo.service&.name || "Tanpa Layanan" %> 
+              - Status: <%= lo.status %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        Tidak ada pesanan
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Tambah Customer", new_customer_path %>
