@@ -29,10 +29,11 @@ class OrdersController < ApplicationController
     )
 
     @order = Order.new(
-      shoe: shoe,  # 🔥 ini biar order langsung nyambung ke sepatu
-      service_id: params[:service_id],
-      status: "Proses"
-    )
+   customer: customer,   # <— ini yang kurang
+   shoe: shoe,
+   service_id: params[:service_id],
+   status: "Proses"
+   )
 
     @order.total_price = @order.service.price if @order.service
 
