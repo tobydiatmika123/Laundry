@@ -1,7 +1,11 @@
-<div class="order-container">
-  <div class="order-header">
+<div class="order-header">
+  <div class="header-left">
+    <%= image_tag "washstep.png", alt: "WashStep Logo", class: "washstep-logo" %>
+  </div>
+  <div class="header-center">
     <h1>Daftar Order</h1>
   </div>
+</div>
 
   <div class="order-actions">
     <%= link_to "Tambah Order Baru", new_order_path, class: "add-order-btn" %>

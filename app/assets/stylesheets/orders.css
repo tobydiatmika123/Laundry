@@ -1,7 +1,7 @@
 body {
-    background-color: #f4f1ed;
+    background-color: #e7962c;
     font-family: "Poppins", Arial, sans-serif;
-    color: #333;
+    color: #ffffff;
     margin: 0;
     padding: 0;
   }
@@ -138,3 +138,49 @@ body {
     color: #555;
   }
   
+  /* Header */
+.order-header {
+  background-color: #7b4b26;
+  color: #fff;
+  display: flex;              /* ubah dari text-align center jadi flex */
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: relative;
+}
+
+/* Logo di kiri */
+.washstep-logo {
+  height: 50px;
+}
+
+/* Judul di tengah */
+.order-header h1 {
+  margin: 0 auto;
+  font-size: 26px;
+  letter-spacing: 1px;
+  text-align: center;
+  flex: 1;
+}
+
+/* Tambahan agar posisi tetap rapi di tengah */
+.header-left {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header-center {
+  width: 100%;
+  text-align: center;
+}
+/* Warna teks tabel */
+
+.order-table th,
+
+.order-table td {
+
+  color: #000; /* hitam */
+
+}
