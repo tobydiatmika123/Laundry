@@ -1,16 +1,21 @@
-<div class="order-header">
-  <div class="header-left">
-    <%= image_tag "washstep.png", alt: "WashStep Logo", class: "washstep-logo" %>
-  </div>
-  <div class="header-center">
-    <h1>Daftar Order</h1>
-  </div>
-</div>
+<div class="order-container">
 
+  <!-- Header -->
+  <div class="order-header">
+    <div class="header-left">
+      <%= image_tag "washstep.png", alt: "WashStep Logo", class: "washstep-logo" %>
+    </div>
+    <div class="header-center">
+      <h1>Daftar Order</h1>
+    </div>
+  </div>
+
+  <!-- Tombol tambah -->
   <div class="order-actions">
     <%= link_to "Tambah Order Baru", new_order_path, class: "add-order-btn" %>
   </div>
 
+  <!-- Tabel daftar order -->
   <table class="order-table">
     <thead>
       <tr>
@@ -22,6 +27,7 @@
         <th>Aksi</th>
       </tr>
     </thead>
+
     <tbody>
       <% if @orders.present? %>
         <% @orders.each do |order| %>
@@ -42,7 +48,7 @@
               <% end %>
             </td>
             <td><%= order.status || "Proses" %></td>
-            <td><%= number_to_currency(order.total_price || 0, unit:"Rp ", delimiter:".", precision:0) %></td>
+            <td><%= number_to_currency(order.total_price || 0, unit: "Rp ", delimiter: ".", precision: 0) %></td>
             <td class="aksi">
               <%= link_to "Detail", order_path(order), class: "btn detail" %>
               <%= link_to "Edit", edit_order_path(order), class: "btn edit" %>
@@ -60,4 +66,5 @@
       <% end %>
     </tbody>
   </table>
+
 </div>

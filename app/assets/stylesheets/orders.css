@@ -1,169 +1,48 @@
+/* === Reset dan Body === */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
-    background-color: #e7962c;
-    font-family: "Poppins", Arial, sans-serif;
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Full layout */
-  .order-container {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #d9904e;
-    padding-bottom: 40px;
-  }
-  
-  /* Header */
-  .order-header {
-    background-color: #7b4b26;
-    color: #fff;
-    text-align: center;
-    padding: 25px 0;
-  }
-  
-  .order-header h1 {
-    margin: 0;
-    font-size: 26px;
-    letter-spacing: 1px;
-  }
-  
-  /* Tombol tambah order */
-  .order-actions {
-    text-align: right;
-    padding: 15px 5%;
-  }
-  
-  .add-order-btn {
-    background-color: #6c3c1c;
-    color: white;
-    text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-weight: 500;
-    font-size: 14px;
-    transition: 0.3s ease;
-  }
-  
-  .add-order-btn:hover {
-    background-color: #522d13;
-  }
-  
-  .order-table {
-    width: calc(100% - 60px); /* hampir full, sisakan 30px di kiri & kanan */
-    margin: 0 auto;
-    border-collapse: collapse;
-    background-color: #e4a665;
-    font-size: 15px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-  
-  
-  .order-table th, .order-table td {
-    border: 1px solid #a56c3b;
-    padding: 12px 10px;
-    text-align: center;
-  }
-  
-  .order-table th {
-    background-color: #f0c38e;
-    color: #333;
-    font-weight: 600;
-  }
-  
-  .order-table tr:nth-child(even) {
-    background-color: #e8b87b;
-  }
-  
-  .order-table tr.done {
-    background-color: #c6f6d5;
-  }
-  
-  /* Hover efek untuk seluruh baris */
-  .order-table tbody tr:hover {
-    background-color: #f7dba7;
-    transition: 0.2s ease-in-out;
-  }
-  
-  /* Tombol aksi */
-  .aksi {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-  }
-  
-  .btn {
-    padding: 6px 10px;
-    border-radius: 5px;
-    font-size: 13px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.2s ease;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .btn.detail {
-    background-color: #3182ce;
-    color: white;
-  }
-  
-  .btn.edit {
-    background-color: #ed8936;
-    color: white;
-  }
-  
-  .btn.hapus {
-    background-color: #e53e3e;
-    color: white;
-  }
-  
-  .btn.selesai {
-    background-color: #38a169;
-    color: white;
-    margin-top: 0; /* biar sejajar */
-  }
-  
-  .btn:hover {
-    opacity: 0.85;
-  }
-  
-  /* Jika tidak ada data */
-  .no-data {
-    text-align: center;
-    padding: 20px;
-    color: #555;
-  }
-  
-  /* Header */
+  background-color: #e7962c;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #ffffff;
+}
+
+/* === Container utama === */
+.order-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #d9904e;
+  margin: 0;
+  padding-top: 120px; /* ⬅️ tambahin jarak biar gak nempel ke header */
+  padding-bottom: 40px;
+  box-sizing: border-box;
+}
+
+/* === HEADER / NAVBAR === */
 .order-header {
   background-color: #7b4b26;
   color: #fff;
-  display: flex;              /* ubah dari text-align center jadi flex */
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 15px 40px;
-  position: relative;
+  padding: 25px 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 0;
+  margin: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
 /* Logo di kiri */
-.washstep-logo {
-  height: 50px;
-}
-
-/* Judul di tengah */
-.order-header h1 {
-  margin: 0 auto;
-  font-size: 26px;
-  letter-spacing: 1px;
-  text-align: center;
-  flex: 1;
-}
-
-/* Tambahan agar posisi tetap rapi di tengah */
 .header-left {
   position: absolute;
   left: 40px;
@@ -171,16 +50,130 @@ body {
   transform: translateY(-50%);
 }
 
-.header-center {
-  width: 100%;
-  text-align: center;
+.washstep-logo {
+  height: 55px;
 }
-/* Warna teks tabel */
 
-.order-table th,
+/* Judul di tengah */
+.header-center {
+  text-align: center;
+  flex: 1;
+}
 
-.order-table td {
+.header-center h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
 
-  color: #000; /* hitam */
+/* === Tombol tambah order === */
+.order-actions {
+  text-align: right;
+  padding: 15px 5%;
+}
 
+.add-order-btn {
+  background-color: #6c3c1c;
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.add-order-btn:hover {
+  background-color: #522d13;
+}
+
+/* === TABEL ORDER === */
+.order-table {
+  width: calc(100% - 60px);
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #e4a665;
+  font-size: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.order-table th, .order-table td {
+  border: 1px solid #a56c3b;
+  padding: 12px 10px;
+  text-align: center;
+  color: #000;
+}
+
+.order-table th {
+  background-color: #f0c38e;
+  color: #333;
+  font-weight: 600;
+}
+
+.order-table tr:nth-child(even) {
+  background-color: #e8b87b;
+}
+
+.order-table tr.done {
+  background-color: #85cf9c;
+}
+
+/* Hover efek untuk seluruh baris */
+.order-table tbody tr:hover {
+  background-color: #f7dba7;
+  transition: 0.2s ease-in-out;
+}
+
+/* === TOMBOL AKSI === */
+.aksi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn {
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.detail {
+  background-color: #3182ce;
+  color: white;
+}
+
+.btn.edit {
+  background-color: #ed8936;
+  color: white;
+}
+
+.btn.hapus {
+  background-color: #e53e3e;
+  color: white;
+}
+
+.btn.selesai {
+  background-color: #38a169;
+  color: white;
+  margin-top: 0;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* === JIKA TIDAK ADA DATA === */
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #555;
 }
