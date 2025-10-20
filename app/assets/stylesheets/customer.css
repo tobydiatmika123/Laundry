@@ -35,34 +35,33 @@ body {
   padding-bottom: 100px;
 }
 
-/* === FORM === */
+
+/* === FORM WRAPPER BESAR === */
 .order-form {
   background-color: #c47b36;
-  padding: 50px 70px;
-  border-radius: 14px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  padding: 60px 80px; /* lebih besar biar lega */
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+
   display: flex;
-  justify-content: space-between;
-  gap: 80px;
-  width: 90%;
-  max-width: 1200px;
+  justify-content: center; /* biar isi di tengah */
+  align-items: flex-start;
+  gap: 120px;
+
+  width: 85%; /* kotak besar lebih lebar */
+  max-width: 1250px; /* batas maksimal biar tetap proporsional */
+  margin: 0 auto; /* posisikan di tengah horizontal */
+  transition: all 0.3s ease;
 }
 
-/* === SECTION === */
+/* === SETIAP BAGIAN (KIRI / KANAN) === */
 .order-section {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 480px; /* batasi agar isi form tidak terlalu melebar */
 }
 
-.order-section h2 {
-  background-color: #ebb16b;
-  color: #4b2e05;
-  font-size: 20px;
-  font-weight: 600;
-  padding: 8px 14px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  width: fit-content;
-}
 
 /* === FORM GROUP INLINE === */
 .form-group-inline {
