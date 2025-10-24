@@ -1,29 +1,46 @@
 <h1>Detail Order</h1>
 
-<p><strong>Customer:</strong> <%= @order.customer&.name %></p>
-<p><strong>Telepon:</strong> <%= @order.customer&.phone %></p>
-<p><strong>Email:</strong> <%= @order.customer&.email %></p>
-<p><strong>Alamat:</strong> <%= @order.customer&.address %></p>
+<table border="1" cellpadding="6" cellspacing="0">
+  <tr>
+    <th>Customer</th>
+    <td><%= @order.customer&.name %></td>
+  </tr>
+  <tr>
+    <th>Telepon</th>
+    <td><%= @order.customer&.phone %></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><%= @order.customer&.email %></td>
+  </tr>
+  <tr>
+    <th>Alamat</th>
+    <td><%= @order.customer&.address %></td>
+  </tr>
+  <tr>
+    <th>Shoe</th>
+    <td><%= @order.shoe ? "#{@order.shoe.brand} (#{@order.shoe.color}, Size: #{@order.shoe.size})" : "-" %></td>
+  </tr>
+  <tr>
+    <th>Service</th>
+    <td><%= @order.service ? "#{@order.service.name} - Rp #{@order.service.price}" : "-" %></td>
+  </tr>
+  <tr>
+    <th>Status</th>
+    <td><%= @order.status %></td>
+  </tr>
+  <tr>
+    <th>Total Harga</th>
+    <td>Rp <%= @order.total_price %></td>
+  </tr>
+  <tr>
+    <th>Tanggal Order</th>
+    <td><%= @order.order_date.strftime("%d %B %Y, %H:%M") %></td>
+  </tr>
+</table>
 
-<p><strong>Shoe:</strong> <%= @order.shoe ? "#{@order.shoe.brand} (#{@order.shoe.color})" : "-" %></p>
-<p><strong>Service:</strong> 
-  <%= @order.service ? "#{@order.service.name} - #{number_to_currency(@order.service.price, unit: 'Rp ', separator: ',', delimiter: '.')}" : "-" %>
-</p>
-<p><strong>Status:</strong> <%= @order.status %></p>
-<p><strong>Total Harga:</strong> 
-  <%= number_to_currency(@order.total_price, unit: "Rp ", separator: ",", delimiter: ".") %>
-</p>
-<p><strong>Tanggal Order:</strong>
-  <%= @order.order_date&.strftime("%d %B %Y, %H:%M") || "—" %>
-</p>
+<br>
 
-
-<hr>
-
-<%= link_to "Edit", edit_order_path(@order), class: "btn btn-warning" %> |
-<%= button_to "Hapus", order_path(@order), 
-      method: :delete, 
-      data: { confirm: "Yakin mau hapus order ini?" }, 
-      class: "btn btn-danger" %> |
-<%= link_to "Kembali", orders_path, class: "btn btn-secondary" %>
-
+<%= link_to "Edit", edit_order_path(@order), class: "btn" %> |
+<%= link_to "Hapus", @order, method: :delete, data: { confirm: "Yakin hapus order ini?" }, class: "btn" %> |
+<%= link_to "Kembali ke Daftar Orders", orders_path, class: "btn" %>
