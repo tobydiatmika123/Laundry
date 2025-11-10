@@ -37,5 +37,5 @@ class CustomersController < ApplicationController
     params.require(:customer).permit(:name, :phone, :email, :address, :shoe_id, :service_id)
   end
 end
-
+         
 
