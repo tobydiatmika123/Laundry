@@ -18,8 +18,8 @@ body {
   min-height: 100vh;
   background-color: #d9904e;
   margin: 0;
-  padding-top: 120px; /* ⬅️ tambahin jarak biar gak nempel ke header */
-  padding-bottom: 40px;
+  padding-top: 160px; /* 🔥 Tambah dari 120px jadi 160px biar tabel turun dikit */
+  padding-bottom: 60px; /* Tambah bawah sedikit juga biar tombol gak nempel */
   box-sizing: border-box;
 }
 
@@ -36,11 +36,22 @@ body {
   left: 0;
   width: 100%;
   box-sizing: border-box;
-  border-radius: 0;
-  margin: 0;
   z-index: 1000;
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+
 }
+
+/* Hilangin efek dua warna di belakang header */
+.order-container {
+  background-color: 7b4b26;
+  padding-top: 160px; /* biar konten gak ketindih header */
+}
+
+/* Tambah ini baru */
+body {
+  background-color: 7b4b26; /* biar seluruh latar belakang sama */
+}
+
 
 /* Logo di kiri */
 .header-left {
@@ -65,27 +76,6 @@ body {
   font-size: 28px;
   letter-spacing: 1px;
   font-weight: 600;
-}
-
-/* === Tombol tambah order === */
-.order-actions {
-  text-align: right;
-  padding: 15px 5%;
-}
-
-.add-order-btn {
-  background-color: #6c3c1c;
-  color: white;
-  text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-weight: 500;
-  font-size: 14px;
-  transition: 0.3s ease;
-}
-
-.add-order-btn:hover {
-  background-color: #522d13;
 }
 
 /* === TABEL ORDER === */
@@ -164,7 +154,6 @@ body {
 .btn.selesai {
   background-color: #38a169;
   color: white;
-  margin-top: 0;
 }
 
 .btn:hover {
@@ -176,4 +165,28 @@ body {
   text-align: center;
   padding: 20px;
   color: #555;
+}
+
+/* === Tombol Tambah Order (bawah tabel) === */
+.order-actions.bottom {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.order-actions.bottom .add-order-btn {
+  background-color: #6c3c1c;
+  color: white;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.order-actions.bottom .add-order-btn:hover {
+  background-color: #522d13;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }

@@ -10,11 +10,6 @@
     </div>
   </div>
 
-  <!-- Tombol tambah -->
-  <div class="order-actions">
-    <%= link_to "Tambah Order Baru", new_order_path, class: "add-order-btn" %>
-  </div>
-
   <!-- Tabel daftar order -->
   <table class="order-table">
     <thead>
@@ -66,5 +61,10 @@
       <% end %>
     </tbody>
   </table>
+
+  <!-- Tombol tambah order di bawah tabel -->
+  <div class="order-actions bottom">
+    <%= link_to "Tambah Order Baru", new_order_path, class: "add-order-btn" %>
+  </div>
 
 </div>
