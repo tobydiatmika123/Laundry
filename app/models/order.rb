@@ -1,6 +1,5 @@
 class Order < ApplicationRecord
   belongs_to :customer
-  belongs_to :shoe
   belongs_to :service
 
   before_validation :set_defaults
@@ -13,4 +12,3 @@ class Order < ApplicationRecord
     self.total_price ||= service&.price || 0
   end
 end
-

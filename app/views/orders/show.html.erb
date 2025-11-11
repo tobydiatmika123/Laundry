@@ -3,44 +3,51 @@
 <table border="1" cellpadding="6" cellspacing="0">
   <tr>
     <th>Customer</th>
-    <td><%= @order.customer&.name %></td>
+    <td><%= @order.customer&.name || "-" %></td>
   </tr>
   <tr>
     <th>Telepon</th>
-    <td><%= @order.customer&.phone %></td>
+    <td><%= @order.customer&.phone || "-" %></td>
   </tr>
   <tr>
     <th>Email</th>
-    <td><%= @order.customer&.email %></td>
+    <td><%= @order.customer&.email || "-" %></td>
   </tr>
   <tr>
     <th>Alamat</th>
-    <td><%= @order.customer&.address %></td>
+    <td><%= @order.customer&.address || "-" %></td>
   </tr>
   <tr>
     <th>Shoe</th>
-    <td><%= @order.shoe ? "#{@order.shoe.brand} (#{@order.shoe.color}, Size: #{@order.shoe.size})" : "-" %></td>
+    <td><%= @order.shoe_name || "-" %></td>
   </tr>
   <tr>
     <th>Service</th>
-    <td><%= @order.service ? "#{@order.service.name} - Rp #{@order.service.price}" : "-" %></td>
+    <td>
+      <% if @order.service %>
+        <%= "#{@order.service.name} - Rp #{number_with_delimiter(@order.service.price, delimiter: '.')}" %>
+      <% else %>
+        -
+      <% end %>
+    </td>
   </tr>
   <tr>
     <th>Status</th>
-    <td><%= @order.status %></td>
+    <td><%= @order.status || "Proses" %></td>
   </tr>
   <tr>
     <th>Total Harga</th>
-    <td>Rp <%= @order.total_price %></td>
+    <td>Rp <%= number_with_delimiter(@order.total_price || 0, delimiter: '.') %></td>
   </tr>
   <tr>
     <th>Tanggal Order</th>
-    <td><%= @order.order_date.strftime("%d %B %Y, %H:%M") %></td>
+    <td><%= @order.order_date&.strftime("%d %B %Y, %H:%M") || "-" %></td>
   </tr>
 </table>
 
 <br>
 
 <%= link_to "Edit", edit_order_path(@order), class: "btn" %> |
-<%= link_to "Hapus", @order, method: :delete, data: { confirm: "Yakin hapus order ini?" }, class: "btn" %> |
+<%= button_to "Hapus", @order, method: :delete, data: { turbo_confirm: "Yakin hapus order ini?" }, class: "btn" %>
+
 <%= link_to "Kembali ke Daftar Orders", orders_path, class: "btn" %>

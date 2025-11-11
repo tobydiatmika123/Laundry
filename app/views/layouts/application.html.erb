@@ -20,16 +20,11 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %> <!-- 🔥 Tambahin ini bro -->
+
     <%= stylesheet_link_tag "customer", media: "all" %>
-     <%= stylesheet_link_tag "orders", media: "all" %>
-     <%= stylesheet_link_tag 'edit', media: 'all' %>
-     
-   
-
-
-
-    
-
+    <%= stylesheet_link_tag "orders", media: "all" %>
+    <%= stylesheet_link_tag "edit", media: "all" %>
   </head>
  
   <body>

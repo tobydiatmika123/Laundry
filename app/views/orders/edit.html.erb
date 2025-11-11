@@ -9,24 +9,28 @@
           <%= form.collection_select :customer_id, Customer.all, :id, :name, { prompt: "Pilih Customer" }, class: "form-control" %>
         </td>
       </tr>
+
       <tr>
-        <th>Sepatu</th>
+        <th>No HP</th>
         <td>
-          <%= form.collection_select :shoe_id, Shoe.all, :id, :brand, { prompt: "Pilih Sepatu" }, class: "form-control" %>
+          <%= text_field_tag :customer_phone, @order.customer&.phone, class: "form-control", placeholder: "Masukkan No HP" %>
         </td>
       </tr>
+
+      <tr>
+        <th>Alamat Rumah</th>
+        <td>
+          <%= text_area_tag :customer_address, @order.customer&.address, class: "form-control", rows: 2, placeholder: "Masukkan alamat rumah" %>
+        </td>
+      </tr>
+
       <tr>
         <th>Service</th>
         <td>
           <%= form.collection_select :service_id, Service.all, :id, :name, { prompt: "Pilih Service" }, class: "form-control", onchange: "updatePrice()" %>
         </td>
       </tr>
-      <tr>
-        <th>Status</th>
-        <td>
-          <%= form.select :status, ["Pending", "Proses", "Selesai"], {}, class: "form-control" %>
-        </td>
-      </tr>
+
       <tr>
         <th>Total Harga</th>
         <td>

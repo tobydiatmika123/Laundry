@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   # GET /orders
   def index
-    @orders = Order.includes(:customer, :shoe, :service).all
+    @orders = Order.includes(:customer, :service).all
   end
 
   # GET /orders/new
@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
+    # Cari atau buat customer baru
     customer = Customer.find_or_create_by(
       name: params[:customer_name],
       email: params[:customer_email],
@@ -20,21 +21,15 @@ class OrdersController < ApplicationController
       address: params[:customer_address]
     )
 
-    shoe = Shoe.create(
-      brand: params[:shoe_brand],
-      color: params[:shoe_color],
-      size: params[:shoe_size],
-      material: params[:shoe_material],
-      condition: params[:shoe_condition]
+    # Buat order baru langsung dengan shoe_name (tanpa tabel Shoe)
+    @order = Order.new(
+      customer: customer,
+      shoe_name: params[:shoe_name],
+      service_id: params[:service_id],
+      status: "Proses"
     )
 
-    @order = Order.new(
-   customer: customer,   # <— ini yang kurang
-   shoe: shoe,
-   service_id: params[:service_id],
-   status: "Proses"
-   )
-
+    # Hitung harga total berdasarkan service yang dipilih
     @order.total_price = @order.service.price if @order.service
 
     if @order.save
@@ -82,6 +77,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:customer_id, :shoe_id, :service_id, :status, :total_price)
+    params.require(:order).permit(:customer_id, :service_id, :shoe_name, :status, :total_price)
   end
 end

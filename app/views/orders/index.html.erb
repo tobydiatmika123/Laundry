@@ -27,14 +27,13 @@
       <% if @orders.present? %>
         <% @orders.each do |order| %>
           <tr class="<%= 'done' if order.status == 'Selesai' %>">
+            <!-- Nama Customer -->
             <td><%= order.customer&.name || "-" %></td>
-            <td>
-              <% if order.shoe %>
-                <%= "#{order.shoe.brand} (#{order.shoe.size}) - #{order.shoe.material}, #{order.shoe.condition}" %>
-              <% else %>
-                -
-              <% end %>
-            </td>
+
+            <!-- Nama Sepatu -->
+            <td><%= order.shoe_name.present? ? order.shoe_name : "-" %></td>
+
+            <!-- Service dan Harga -->
             <td>
               <% if order.service %>
                 <%= "#{order.service.name} - #{number_to_currency(order.service.price, unit: 'Rp ', delimiter: '.', precision: 0)}" %>
@@ -42,12 +41,19 @@
                 -
               <% end %>
             </td>
+
+            <!-- Status -->
             <td><%= order.status || "Proses" %></td>
+
+            <!-- Total Harga -->
             <td><%= number_to_currency(order.total_price || 0, unit: "Rp ", delimiter: ".", precision: 0) %></td>
+
+            <!-- Tombol Aksi -->
             <td class="aksi">
               <%= link_to "Detail", order_path(order), class: "btn detail" %>
               <%= link_to "Edit", edit_order_path(order), class: "btn edit" %>
-              <%= link_to "Hapus", order_path(order), method: :delete, data: { confirm: "Yakin hapus?" }, class: "btn hapus" %>
+              <%= button_to "Hapus", order_path(order), method: :delete, data: { turbo_confirm: "Yakin hapus?" }, class: "btn hapus" %>
+
               <% if order.status != "Selesai" %>
                 <%= button_to "Selesai", finish_order_path(order), method: :patch, data: { confirm: "Tandai order ini selesai?" }, class: "btn selesai" %>
               <% end %>
