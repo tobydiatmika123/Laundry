@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
     if @order.update(order_params)
       redirect_to orders_path, notice: "Order berhasil diperbarui!"
     else
-      render :edit
+   render :edit
     end
   end
 
