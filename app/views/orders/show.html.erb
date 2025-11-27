@@ -1,53 +1,134 @@
-<h1>Detail Order</h1>
+<div class="order-detail-wrapper">
+  <h1 class="title-detail">Detail Order</h1>
 
-<table border="1" cellpadding="6" cellspacing="0">
-  <tr>
-    <th>Customer</th>
-    <td><%= @order.customer&.name || "-" %></td>
-  </tr>
-  <tr>
-    <th>Telepon</th>
-    <td><%= @order.customer&.phone || "-" %></td>
-  </tr>
-  <tr>
-    <th>Email</th>
-    <td><%= @order.customer&.email || "-" %></td>
-  </tr>
-  <tr>
-    <th>Alamat</th>
-    <td><%= @order.customer&.address || "-" %></td>
-  </tr>
-  <tr>
-    <th>Shoe</th>
-    <td><%= @order.shoe_name || "-" %></td>
-  </tr>
-  <tr>
-    <th>Service</th>
-    <td>
-      <% if @order.service %>
-        <%= "#{@order.service.name} - Rp #{number_with_delimiter(@order.service.price, delimiter: '.')}" %>
-      <% else %>
-        -
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th>Status</th>
-    <td><%= @order.status || "Proses" %></td>
-  </tr>
-  <tr>
-    <th>Total Harga</th>
-    <td>Rp <%= number_with_delimiter(@order.total_price || 0, delimiter: '.') %></td>
-  </tr>
-  <tr>
-    <th>Tanggal Order</th>
-    <td><%= @order.order_date&.strftime("%d %B %Y, %H:%M") || "-" %></td>
-  </tr>
-</table>
+  <div class="detail-card">
 
-<br>
+    <div class="detail-row">
+      <label>Customer</label>
+      <div class="value"><%= @order.customer&.name || "-" %></div>
+    </div>
 
-<%= link_to "Edit", edit_order_path(@order), class: "btn" %> |
-<%= button_to "Hapus", @order, method: :delete, data: { turbo_confirm: "Yakin hapus order ini?" }, class: "btn" %>
+    <div class="detail-row">
+      <label>Telepon</label>
+      <div class="value"><%= @order.customer&.phone || "-" %></div>
+    </div>
 
-<%= link_to "Kembali ke Daftar Orders", orders_path, class: "btn" %>
+    <div class="detail-row">
+      <label>Email</label>
+      <div class="value"><%= @order.customer&.email || "-" %></div>
+    </div>
+
+    <div class="detail-row">
+      <label>Alamat</label>
+      <div class="value"><%= @order.customer&.address || "-" %></div>
+    </div>
+
+    <div class="detail-row">
+      <label>Shoe</label>
+      <div class="value"><%= @order.shoe_name || "-" %></div>
+    </div>
+
+    <div class="detail-row">
+      <label>Service</label>
+      <div class="value">
+        <% if @order.service %>
+          <%= "#{@order.service.name} - Rp #{number_with_delimiter(@order.service.price, delimiter: '.')}" %>
+        <% else %>
+          -
+        <% end %>
+      </div>
+    </div>
+
+    <div class="detail-row">
+      <label>Status</label>
+      <div class="value"><%= @order.status || "Proses" %></div>
+    </div>
+
+    <div class="detail-row">
+      <label>Total Harga</label>
+      <div class="value">Rp <%= number_with_delimiter(@order.total_price || 0, delimiter: '.') %></div>
+    </div>
+
+    <div class="detail-row">
+      <label>Tanggal Order</label>
+      <div class="value"><%= @order.order_date&.strftime("%d %B %Y, %H:%M") || "-" %></div>
+    </div>
+
+    <!-- Tombol -->
+    <div class="btn-group">
+      <%= link_to "Edit", edit_order_path(@order), class: "btn-edit" %>
+      <%= button_to "Hapus", @order, method: :delete, data: { turbo_confirm: "Yakin hapus order ini?" }, class: "btn-delete" %>
+      <%= link_to "Kembali", orders_path, class: "btn-back" %>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .order-detail-wrapper {
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  .title-detail {
+    font-size: 36px;
+    font-weight: bold;
+    color: #5c2d0a;
+    margin-bottom: 25px;
+  }
+
+  .detail-card {
+    background: #c66b20;
+    width: 70%;
+    margin: auto;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    text-align: left;
+  }
+
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #b55e1b;
+    font-size: 18px;
+  }
+
+  .detail-row label {
+    font-weight: bold;
+    color: #3e1d08;
+  }
+
+  .value {
+    color: #fff5e6;
+  }
+
+  .btn-group {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+  }
+
+  .btn-edit,
+  .btn-delete,
+  .btn-back {
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-edit { background: #5c2d0a; }
+  .btn-delete { background: #b32020; }
+  .btn-back { background: #6f3f1c; }
+
+  .btn-delete button {
+    background: none;
+    border: none;
+    color: white;
+  }
+</style>
