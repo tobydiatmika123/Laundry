@@ -1,5 +1,11 @@
+<div class="header-bar">
+  <div class="header-left">
+    <%= image_tag "washstep.png", alt: "WashStep", class: "logo-header" %>
+  </div>
+  <h1 class="header-title">Detail Order</h1>
+</div>
+
 <div class="order-detail-wrapper">
-  <h1 class="title-detail">Detail Order</h1>
 
   <div class="detail-card">
 
@@ -65,16 +71,45 @@
 </div>
 
 <style>
+  /* HEADER FIXED */
+  .header-bar {
+    background: #7a3f0c;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; /* tetap di atas */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .header-left {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .logo-header {
+    width: 150px;
+    height: auto;
+  }
+
+  .header-title {
+    color: white;
+    font-size: 40px;
+    font-weight: 800;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* DETAIL PAGE */
   .order-detail-wrapper {
     text-align: center;
     padding: 40px 0;
-  }
-
-  .title-detail {
-    font-size: 36px;
-    font-weight: bold;
-    color: #5c2d0a;
-    margin-bottom: 25px;
+    margin-top: 150px; /* biar ga ketiban header */
   }
 
   .detail-card {
@@ -85,6 +120,7 @@
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     text-align: left;
+    color: white; /* semua teks putih */
   }
 
   .detail-row {
@@ -97,13 +133,14 @@
 
   .detail-row label {
     font-weight: bold;
-    color: #3e1d08;
+    color: #fff; /* label putih */
   }
 
   .value {
-    color: #fff5e6;
+    color: #fff; /* nilai putih */
   }
 
+  /* BUTTONS */
   .btn-group {
     margin-top: 25px;
     display: flex;
@@ -125,10 +162,4 @@
   .btn-edit { background: #5c2d0a; }
   .btn-delete { background: #b32020; }
   .btn-back { background: #6f3f1c; }
-
-  .btn-delete button {
-    background: none;
-    border: none;
-    color: white;
-  }
 </style>
