@@ -1,165 +1,133 @@
-<div class="header-bar">
-  <div class="header-left">
-    <%= image_tag "washstep.png", alt: "WashStep", class: "logo-header" %>
-  </div>
-  <h1 class="header-title">Detail Order</h1>
-</div>
-
-<div class="order-detail-wrapper">
-
-  <div class="detail-card">
-
-    <div class="detail-row">
-      <label>Customer</label>
-      <div class="value"><%= @order.customer&.name || "-" %></div>
-    </div>
-
-    <div class="detail-row">
-      <label>Telepon</label>
-      <div class="value"><%= @order.customer&.phone || "-" %></div>
-    </div>
-
-    <div class="detail-row">
-      <label>Email</label>
-      <div class="value"><%= @order.customer&.email || "-" %></div>
-    </div>
-
-    <div class="detail-row">
-      <label>Alamat</label>
-      <div class="value"><%= @order.customer&.address || "-" %></div>
-    </div>
-
-    <div class="detail-row">
-      <label>Shoe</label>
-      <div class="value"><%= @order.shoe_name || "-" %></div>
-    </div>
-
-    <div class="detail-row">
-      <label>Service</label>
-      <div class="value">
-        <% if @order.service %>
-          <%= "#{@order.service.name} - Rp #{number_with_delimiter(@order.service.price, delimiter: '.')}" %>
-        <% else %>
-          -
-        <% end %>
-      </div>
-    </div>
-
-    <div class="detail-row">
-      <label>Status</label>
-      <div class="value"><%= @order.status || "Proses" %></div>
-    </div>
-
-    <div class="detail-row">
-      <label>Total Harga</label>
-      <div class="value">Rp <%= number_with_delimiter(@order.total_price || 0, delimiter: '.') %></div>
-    </div>
-
-    <div class="detail-row">
-      <label>Tanggal Order</label>
-      <div class="value"><%= @order.order_date&.strftime("%d %B %Y, %H:%M") || "-" %></div>
-    </div>
-
-    <!-- Tombol -->
-    <div class="btn-group">
-      <%= link_to "Edit", edit_order_path(@order), class: "btn-edit" %>
-      <%= button_to "Hapus", @order, method: :delete, data: { turbo_confirm: "Yakin hapus order ini?" }, class: "btn-delete" %>
-      <%= link_to "Kembali", orders_path, class: "btn-back" %>
-    </div>
-
-  </div>
-</div>
+<h1>Detail Order</h1>
 
 <style>
-  /* HEADER FIXED */
-  .header-bar {
-    background: #7a3f0c;
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed; /* tetap di atas */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+  body {
+    background: #e89348;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
   }
 
-  .header-left {
-    position: absolute;
-    left: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .logo-header {
-    width: 150px;
-    height: auto;
-  }
-
-  .header-title {
+  h1 {
+    text-align: center;
+    background-color: #7b441b;
     color: white;
     font-size: 40px;
-    font-weight: 800;
+    font-weight: bold;
     margin: 0;
-    text-align: center;
+    padding: 20px 0;
   }
 
-  /* DETAIL PAGE */
-  .order-detail-wrapper {
-    text-align: center;
-    padding: 40px 0;
-    margin-top: 150px; /* biar ga ketiban header */
-  }
-
-  .detail-card {
-    background: #c66b20;
-    width: 70%;
-    margin: auto;
-    padding: 30px;
+  .show-container {
+    max-width: 900px;
+    margin: 80px auto;
+    background: #c96f24;
+    padding: 40px 60px;
     border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    text-align: left;
-    color: white; /* semua teks putih */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    color: #000;
   }
 
   .detail-row {
     display: flex;
     justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid #b55e1b;
+    margin-bottom: 18px;
     font-size: 18px;
   }
 
-  .detail-row label {
-    font-weight: bold;
-    color: #fff; /* label putih */
+  .detail-label {
+    font-weight: 600;
   }
 
-  .value {
-    color: #fff; /* nilai putih */
+  .detail-value {
+    font-weight: 400;
   }
 
-  /* BUTTONS */
-  .btn-group {
-    margin-top: 25px;
+  .button-group {
+    margin-top: 35px;
     display: flex;
     gap: 15px;
+    justify-content: center;
   }
 
-  .btn-edit,
-  .btn-delete,
-  .btn-back {
-    padding: 10px 20px;
+  .btn {
+    padding: 10px 24px;
     border-radius: 10px;
     text-decoration: none;
-    font-weight: bold;
-    color: white;
-    border: none;
-    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
   }
 
-  .btn-edit { background: #5c2d0a; }
-  .btn-delete { background: #b32020; }
-  .btn-back { background: #6f3f1c; }
+  .edit-btn {
+    background: #ffd28a;
+    color: #000;
+  }
+
+  .delete-btn {
+    background: #ff9b72;
+    color: #000;
+  }
+
+  .back-btn {
+    background: #ffe0b5;
+    color: #000;
+  }
 </style>
+<div class="header-left">
+      <%= image_tag "washstep.png", alt: "WashStep Logo", width: "120" %>
+    </div>
+
+<div class="show-container">
+
+  <div class="detail-row">
+    <span class="detail-label">Customer</span>
+    <span class="detail-value"><%= @order.customer&.name %></span>
+  </div>
+
+  <div class="detail-row">
+    <span class="detail-label">No HP</span>
+    <span class="detail-value"><%= @order.customer&.phone %></span>
+  </div>
+
+  <div class="detail-row">
+    <span class="detail-label">Email</span>
+    <span class="detail-value"><%= @order.customer&.email %></span>
+  </div>
+
+  <div class="detail-row">
+    <span class="detail-label">Alamat Rumah</span>
+    <span class="detail-value"><%= @order.customer&.address %></span>
+  </div>
+
+  <div class="detail-row">
+    <span class="detail-label">Sepatu</span>
+    <span class="detail-value"><%= @order.shoe_name %></span>
+  </div>
+
+  <div class="detail-row">
+    <span class="detail-label">Service</span>
+    <span class="detail-value"><%= @order.service.name %> – Rp <%= @order.service.price %></span>
+  </div>
+
+  <div class="detail-row">
+    <span class="detail-label">Status</span>
+    <span class="detail-value"><%= @order.status %></span>
+  </div>
+
+  <div class="detail-row">
+    <span class="detail-label">Total Harga</span>
+    <span class="detail-value">Rp <%= @order.total_price %></span>
+  </div>
+
+  <div class="detail-row">
+    <span class="detail-label">Tanggal Order</span>
+    <span class="detail-value"><%= @order.created_at.strftime("%d %B %Y, %H:%M") %></span>
+  </div>
+
+  <div class="button-group">
+    <%= link_to "Edit", edit_order_path(@order), class: "btn edit-btn" %>
+    <%= link_to "Hapus", order_path(@order), data: { turbo_method: :delete, turbo_confirm: "Hapus order ini?" }, class: "btn delete-btn" %>
+    <%= link_to "Kembali", orders_path, class: "btn back-btn" %>
+  </div>
+
+</div>
