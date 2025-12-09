@@ -1,8 +1,15 @@
-<div class="order-container">
-  <div class="order-header">
-    <h2>Order</h2>
+<div class="order-header">
+  <div class="header-left">
+    <%= image_tag "washstep.png", alt: "WashStep Logo", width: "120" %>
   </div>
-<%= image_tag "washstep.png", alt: "WashStep Logo", width: "120" %>
+  <div class="header-center">
+    <h1>Order</h1>
+  </div>
+</div>
+
+<div class="order-container">
+
+
   <%= form_with url: orders_path, method: :post, local: true do %>
     <div class="order-form">
       <!-- === KIRI: CUSTOMER === -->

@@ -10,18 +10,21 @@
 </div>
 
 <style>
+  /* === RESET + BODY === */
   body, html {
     margin: 0;
     padding: 0;
     width: 100%;
     overflow-x: hidden;
-    background-color: #7b4b26; /* sama seperti daftar */
+
+    /* 🔥 PENTING: Background utama sama seperti daftar order */
+    background-color: #d9904e !important;
     font-family: "Poppins", Arial, sans-serif;
   }
 
-  /* ===== HEADER FIXED ===== */
+  /* === HEADER / NAVBAR === */
   .order-header {
-    background-color: #7b4b26;
+    background-color: #7b4b26 !important;  /* sama persis */
     color: #fff;
     display: flex;
     justify-content: center;
@@ -36,6 +39,7 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.25);
   }
 
+  /* Logo kiri */
   .header-left {
     position: absolute;
     left: 40px;
@@ -43,10 +47,7 @@
     transform: translateY(-50%);
   }
 
-  .washstep-logo {
-    height: 55px;
-  }
-
+  /* Judul tengah */
   .header-center h1 {
     margin: 0;
     font-size: 28px;
@@ -55,16 +56,22 @@
     text-align: center;
   }
 
-  /* ===== CONTENT BOX ===== */
-  .show-container {
+  /* ===== CONTAINER DETAIL ORDER ===== */
+ .show-container {
     max-width: 900px;
-    margin: 180px auto 60px; /* DI TURUNKAN KARENA HEADER FIXED */
-    background: #c96f24;
+
+    /* turun dari header */
+    margin: 180px auto 60px;
+
+    /* 🎨 warna lebih coklat sedikit dari background */
+    background: #c57b3c !important;
+
     padding: 40px 65px;
     border-radius: 22px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
     color: #000;
-  }
+}
+
 
   .detail-row {
     display: flex;
@@ -82,6 +89,7 @@
     text-align: right;
   }
 
+  /* ===== TOMBOL ===== */
   .button-group {
     margin-top: 40px;
     display: flex;
@@ -116,7 +124,7 @@
 </style>
 
 
-<!-- ===== ISI DETAIL ORDER (TETAP SAMA) ===== -->
+<!-- ===== ISI DETAIL ORDER ===== -->
 <div class="show-container">
 
   <div class="detail-row">
